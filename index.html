@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Drug Classification</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    .index
+    {
+    margin: 0px;
+    padding:20px;
+    color:black;
+    font-style: bold;
+    border-radius:30px;
+    font-size:25px;
+    }
+    body
+    {
+    background-image: url("https://paytmblogcdn.paytm.com/wp-content/uploads/2023/04/4_Life-Insurance_-What-are-the-Factors-that-Determine-the-Term-Insurance-Premium-Rate-800x500.webp?webp2");
+    background-size: cover;
+    }
+    p
+    {
+    color:black;
+    font-style:italic;
+    font-size:30px;
+    }
+    </style>
+
+</head>
+<body>
+
+<div class="index">
+    <center>
+	    <h1>Insurance Premium Calculator </h1><br>
+        <h3>
+            <p>The purpose of this calculator is to predict the premium of your insurance based on the inputs provided.</p>
+        </h3><br>
+    </center>
+
+     <!-- Main Input For Receiving Query to our ML -->
+<h6>
+    <form action="{{ url_for('predict')}}"method="post">
+        <center>
+        <label for="Age" >Age:</label><br>
+        <input type="text" id="Age" name="Age" placeholder="Age" required="required"/><br><br>
+        <label for="Sex">Sex:</label><br>
+        <select id="sex" name="Sex">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option></select><br><br>
+        <label for="BMI" >BMI:</label><br>
+        <input type="text" id="bmi" name="BMI" placeholder="BMI" required="required"/><br><br>
+        <label for="Number of Children">Number of Children:</label><br>
+        <select id="children" name="Number of Children">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option></select><br><br>
+        <label for="Smoker">Smoker:</label><br>
+        <select id="smoker" name="Smoker">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option></select><br><br>
+        <label for="Region">Region</label><br>
+        <select id="region" name="Region">
+            <option value="southeast">South East</option>
+            <option value="northeast">North East</option>
+            <option value="northwest">North West</option>
+            <option value="southwest">South West</option></select><br><br>
+        </center>
+        <button type="submit" class="btn btn-primary btn-block ">Predict</button>
+    </form>
+    <br>
+</h6>
+    <h3>
+            {{ prediction_text }}
+    </h3>
+
+</div>
+
+</body>
+</html>
